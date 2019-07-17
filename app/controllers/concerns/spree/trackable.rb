@@ -13,7 +13,7 @@ module Spree
     private
 
     def track_changes?
-      ( !request.get? || adjustment_request ) && try_spree_current_user.has_spree_role?('admin') && try_spree_current_user.present?
+      ( !request.get? || adjustment_request ) && try_spree_current_user.try('admin?') && try_spree_current_user.present?
     end
 
     def adjustment_request
